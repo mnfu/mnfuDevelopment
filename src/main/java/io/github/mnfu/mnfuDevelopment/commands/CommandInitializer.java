@@ -1,6 +1,7 @@
 package io.github.mnfu.mnfuDevelopment.commands;
 
 import org.bukkit.Bukkit;
+
 public class CommandInitializer {
     public static void initializeCommands() {
         Bukkit.getLogger().info("[mnfuDevelopment] Command initialization started");
