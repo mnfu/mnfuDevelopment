@@ -83,7 +83,7 @@ public abstract class CommandBase extends BukkitCommand implements CommandExecut
     }
 
     public boolean execute(CommandSender sender, String alias, String[] arguments) {
-        if(arguments.length < minArguments || (arguments.length < maxArguments && maxArguments != -1)) {
+        if(arguments.length < minArguments || ((arguments.length < maxArguments && maxArguments != -1) && (minArguments != 0))) {
             sendUsage(sender);
             return true;
         }

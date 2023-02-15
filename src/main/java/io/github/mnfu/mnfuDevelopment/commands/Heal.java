@@ -2,23 +2,42 @@ package io.github.mnfu.mnfuDevelopment.commands;
 
 import io.github.mnfu.mnfuDevelopment.CommandBase;
 import io.github.mnfu.mnfuDevelopment.Msg;
+import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class Heal {
     public Heal() {
-        new CommandBase("heal", true) {
+        new CommandBase("heal",0,1,true) {
             @Override
             public boolean onCommand(CommandSender sender, String[] arguments) {
-                Player player = (Player) sender;
-                player.setHealth(20d);
-                Msg.send(sender, "&a" + player.getName() + " has been healed");
+                if(arguments.length == 0) {
+                    Player player = (Player) sender;
+                    player.setHealth(20d);
+                    Msg.send(sender, "&aYou have been healed");
+                }
+                else{
+                    String playerName = arguments[0];
+                    Player target = Bukkit.getServer().getPlayerExact(playerName);
+                    if(target == null) {
+                        Msg.send(sender, "&aThis Player is not online");
+                    }
+                    else{
+                        target.setHealth(20d);
+                        if(sender.getName().equals(target.getName())) {
+                            Msg.send(target, "&aYou have been healed");
+                        }
+                        else {
+                            Msg.send(target, "&aYou have been healed");
+                            Msg.send(sender, "&a" + target.getName() + " has been healed");
+                        }
+                    }
+                }
                 return true;
             }
-
             @Override
             public String getUsage() {
-                return "/heal";
+                return "/heal <playername>";
             }
         }.enableDelay(2);
     }
