@@ -1,0 +1,4 @@
+name: mnfuDevelopment
+version: 1.0
+main: io.github.mnfu.mnfuDevelopment.Main
+api-version: 1.19

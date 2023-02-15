@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="mnfuDevelopment:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/mnfuDevelopment_jar</output-path>
+    <root id="archive" name="mnfuDevelopment.jar">
+      <element id="module-output" name="mnfuDevelopment" />
+    </root>
+  </artifact>
+</component>
