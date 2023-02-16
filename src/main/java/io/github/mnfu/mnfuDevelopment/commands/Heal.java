@@ -8,9 +8,15 @@ import org.bukkit.entity.Player;
 
 public class Heal {
     public Heal() {
+        String permission = "mnfuDevelopment.heal";
         new CommandBase("heal",0,1,true) {
             @Override
             public boolean onCommand(CommandSender sender, String[] arguments) {
+                setDescription("Heals a player");
+                if(!sender.hasPermission(permission)){
+                    Msg.send(sender, "&cYou do not have permission");
+                    return true;
+                }
                 if(arguments.length == 0) {
                     Player player = (Player) sender;
                     player.setHealth(20d);
