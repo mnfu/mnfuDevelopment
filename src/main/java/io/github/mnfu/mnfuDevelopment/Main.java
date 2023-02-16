@@ -1,5 +1,6 @@
 package io.github.mnfu.mnfuDevelopment;
 
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import static io.github.mnfu.mnfuDevelopment.commands.CommandInitializer.initializeCommands;
 
@@ -8,8 +9,11 @@ public class Main extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        long start = System.currentTimeMillis();
         instance = this;
         initializeCommands();
+        long end = System.currentTimeMillis();
+        Bukkit.getLogger().info("[mnfuDevelopment] Plugin initialization finished (took " + (end-start) + "ms)");
     }
 
     @Override

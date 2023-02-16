@@ -9,6 +9,6 @@ public class CommandInitializer {
         new Feed();
         new Heal();
         long end = System.currentTimeMillis();
-        Bukkit.getLogger().info("[mnfuDevelopment] Command initialization finished (" + (end-start) + "ms)");
+        Bukkit.getLogger().info("[mnfuDevelopment] Command initialization finished (took " + (end-start) + "ms)");
     }
 }
