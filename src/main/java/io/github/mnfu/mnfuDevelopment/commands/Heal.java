@@ -13,8 +13,7 @@ public class Heal {
             @Override
             public boolean onCommand(CommandSender sender, String[] arguments) {
                 setDescription("Heals a player");
-                if(!sender.hasPermission(permission)){
-                    Msg.send(sender, "&cYou do not have permission");
+                if(checkPerm(sender, permission)) {
                     return true;
                 }
                 if(arguments.length == 0) {
