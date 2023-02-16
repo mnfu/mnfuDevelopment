@@ -82,6 +82,13 @@ public abstract class CommandBase extends BukkitCommand implements CommandExecut
         Msg.send(sender, getUsage());
     }
 
+    public boolean checkPerm(CommandSender sender, String permission) {
+        if(!sender.hasPermission(permission)){
+            Msg.send(sender, "&cYou do not have permission");
+            return true;
+        }
+        return  false;
+    }
     public boolean execute(CommandSender sender, String alias, String[] arguments) {
         if(arguments.length < minArguments || ((arguments.length < maxArguments && maxArguments != -1) && (minArguments != 0))) {
             sendUsage(sender);
@@ -93,11 +100,13 @@ public abstract class CommandBase extends BukkitCommand implements CommandExecut
             return true;
         }
 
+        /*
+        * Unused permission checker, changed out for the checkPerm() which i favor more in this case
         String permission = getPermission();
         if(permission != null && !sender.hasPermission((permission))) {
             Msg.send(sender, "&cYou do not have permission to use this command.");
             return true;
-        }
+        }*/
 
         if(delayedPlayers != null && sender instanceof Player) {
             Player player = (Player) sender;
