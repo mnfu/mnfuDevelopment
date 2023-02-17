@@ -7,7 +7,7 @@ import org.bukkit.entity.Player;
 
 public class Feed {
     public Feed() {
-        new CommandBase("feed", 0, 1, true) {
+        new CommandBase("feed", true) {
             @Override
             public boolean onCommand(CommandSender sender, String[] arguments) {
                 Player player = (Player) sender;
