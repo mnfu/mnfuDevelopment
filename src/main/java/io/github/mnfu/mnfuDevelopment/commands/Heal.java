@@ -2,6 +2,7 @@ package io.github.mnfu.mnfuDevelopment.commands;
 
 import io.github.mnfu.mnfuDevelopment.CommandBase;
 import io.github.mnfu.mnfuDevelopment.Msg;
+
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -13,9 +14,6 @@ public class Heal {
             @Override
             public boolean onCommand(CommandSender sender, String[] arguments) {
                 setDescription("Heals a player");
-                if(checkPerm(sender, permission)) {
-                    return true;
-                }
                 if(arguments.length == 0) {
                     Player player = (Player) sender;
                     player.setHealth(20d);
@@ -25,7 +23,7 @@ public class Heal {
                     String playerName = arguments[0];
                     Player target = Bukkit.getServer().getPlayerExact(playerName);
                     if(target == null) {
-                        Msg.send(sender, "&aThis Player is not online");
+                        Msg.send(sender, "&aThis player is not online");
                     }
                     else{
                         target.setHealth(20d);
@@ -43,6 +41,10 @@ public class Heal {
             @Override
             public String getUsage() {
                 return "/heal <playername>";
+            }
+            @Override
+            public String getPermission() {
+                return permission;
             }
         }.enableDelay(2);
     }

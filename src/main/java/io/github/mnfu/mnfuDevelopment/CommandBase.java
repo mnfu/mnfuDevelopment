@@ -8,6 +8,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.defaults.BukkitCommand;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.SimplePluginManager;
+
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
@@ -82,13 +83,6 @@ public abstract class CommandBase extends BukkitCommand implements CommandExecut
         Msg.send(sender, getUsage());
     }
 
-    public boolean checkPerm(CommandSender sender, String permission) {
-        if(!sender.hasPermission(permission)){
-            Msg.send(sender, "&cYou do not have permission");
-            return true;
-        }
-        return  false;
-    }
     @Override
     public boolean execute(CommandSender sender, String alias, String[] arguments) {
         if(arguments.length == minArguments) {}
@@ -102,13 +96,11 @@ public abstract class CommandBase extends BukkitCommand implements CommandExecut
             return true;
         }
 
-        /*
-        * Unused permission checker, changed out for the checkPerm() which i favor more in this case
         String permission = getPermission();
         if(permission != null && !sender.hasPermission((permission))) {
             Msg.send(sender, "&cYou do not have permission to use this command.");
             return true;
-        }*/
+        }
 
         if(delayedPlayers != null && sender instanceof Player) {
             Player player = (Player) sender;

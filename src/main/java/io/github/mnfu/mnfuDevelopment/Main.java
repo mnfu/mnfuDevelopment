@@ -2,6 +2,7 @@ package io.github.mnfu.mnfuDevelopment;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
+
 import static io.github.mnfu.mnfuDevelopment.commands.CommandInitializer.initializeCommands;
 
 public class Main extends JavaPlugin {
